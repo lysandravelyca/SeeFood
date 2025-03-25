@@ -52,7 +52,7 @@ struct ContentView: View {
                         }
                     }
                     
-                    Text("This Week's Recommendation")
+                    Text("This Week's Recommendation!!")
                         .bold()
                         .font(.system(size: 24))
                         .foregroundStyle(.white)

@@ -49,6 +49,7 @@ struct TenantListView: View {
            .navigationTitle(location.name)
     }
 }
+
 #Preview {
     let sampleLocation = LocationData.shared.locations.first!
     return TenantListView(location: sampleLocation)
