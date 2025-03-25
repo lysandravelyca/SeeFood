@@ -56,7 +56,6 @@ struct ContentView: View {
                         .bold()
                         .font(.system(size: 24))
                         .foregroundStyle(.white)
-//                        .padding(.top, -12)
                     Text("Try out these delicious menus🍽️")
                         .foregroundStyle(.white)
                        
@@ -68,11 +67,9 @@ struct ContentView: View {
                             Image("pohon")
                                 .resizable()
                                 .frame(width: 230, height: 150)
-    //                            .border(.green)
                             
                             Image("kantin")
                                 .resizable()
-                            //                               .aspectRatio(contentMode: .fill)
                                 .frame(width: 230, height: 150)
     //                            .border(.green)
                             
