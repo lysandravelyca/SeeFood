@@ -24,7 +24,6 @@ struct ContentView: View {
         NavigationStack {
             
             ZStack{
-            
                 Image("tes")
                     .resizable()
                     .ignoresSafeArea(.all)
