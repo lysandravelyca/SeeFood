@@ -80,13 +80,20 @@ class TenantData {
                     
                 ], price: "Rp 20.000 - Rp 30.000", hour: "08.00 - 13.00", phone: "089745321788", locationID: locations[0].id)
             ],
+            
             "GOP 6": [
-                Tenant(name: "Tenant C", image: "logo", menuItems: [
-                    MenuItem(image: "logo", name: "Menu 3", des: "Deskripsi menu 3", price: "20.00"),
-                    MenuItem(image: "pohon", name: "Ayam Chasiu", des: "esse", price: "rp10"),
-                    MenuItem(image: "pohon", name: "Menu 4", des: "Deskripsi menu 4", price: "18.00")
-                ], price: "f", hour: "10.00", phone: "nomor hp", locationID: locations[1].id)
+                
+                Tenant(name: "Lawson", image: "L", menuItems: [
+                    
+                    MenuItem(image: "L1", name: "Chicken Katsu Bento", des: "Nasi dengan ayam katsu crispy, saus tonkatsu, salad segar, dan telur dadar.", price: "Rp 35.000"),
+                    MenuItem(image: "L2", name: "Onigiri Tuna Mayo", des: "Nasi kepal khas Jepang dengan isian tuna mayo creamy, dibungkus dengan nori renyah.", price: "Rp 15.000"),
+                    MenuItem(image: "L3", name: "Oden Combo", des: "Pilihan fishcake, tahu isi, dan bakso ikan dalam kuah kaldu Jepang hangat.", price: "Rp 20.000"),
+                    MenuItem(image: "L4", name: "Es Kopi Susu Gula Aren", des: "Perpaduan kopi espresso, susu segar, dan gula aren yang manis alami.", price: "Rp 18.000"),
+                    MenuItem(image: "L5", name: "Es Coklat Jepang", des: "Minuman coklat kental dengan rasa khas kakao Jepang.", price: "Rp 22.000")
+    
+                ], price: "Rp 15.000 - Rp 35.000", hour: "08.00 - 17.00", phone: "089743217755", locationID: locations[1].id)
             ],
+            
             "The Breeze": [
                 Tenant(name: "Tenant D", image: "logo", menuItems: [
                     MenuItem(image: "logo", name: "Menu 5", des: "Deskripsi menu 5", price: "22.00"),
@@ -98,10 +105,21 @@ class TenantData {
             "Traveloka Campus": [
                 
                 Tenant(name: "Dapur Kencana", image: "D", menuItems: [
-                    MenuItem(image: "logo", name: "Menu 7", des: "Deskripsi menu 7", price: "30.00"),
-                    MenuItem(image: "pohon", name: "Menu 8", des: "Deskripsi menu 8", price: "35.00")
-                ], price: "f", hour: "10.00", phone: "nomor hp", locationID: locations[3].id)
+                    MenuItem(image: "D1", name: "Nasi Liwet Komplit", des: "Nasi liwet gurih dengan ayam , tahu tempe, sambal, dan lalapan.", price: "Rp 35.000"),
+                    MenuItem(image: "D2", name: "Nasi Gudeg Kencana", des: "Gudeg nangka khas Jogja dengan krecek pedas, ayam opor, dan telur bacem.", price: "Rp 32.000"),
+                    MenuItem(image: "D3", name: "Ayam Bakar Madu", des: "Nasi ayam panggang bumbu madu manis gurih.", price: "Rp 25.000"),
+                    MenuItem(image: "D4", name: "Tahu & Tempe Bacem", des: "Tahu dan tempe yang dimasak dengan gula merah dan rempah, manis dan gurih.", price: "Rp 12.000")
+                    
+                ], price: "Rp 12.000 - Rp 35.000", hour: "08.00 - 13.00", phone: "089543281177", locationID: locations[3].id),
                 
+                Tenant(name: "Family Mart", image: "F", menuItems: [
+                    MenuItem(image: "F1", name: "karaage Don", des: "Nasi dengan ayam goreng karaage renyah, disajikan dengan mayones pedas dan nori.", price: "Rp 23.000"),
+                    MenuItem(image: "F2", name: "Beef Yakiniku Bento", des: "Nasi dengan daging sapi tumis saus yakiniku, lengkap dengan sayur dan telur.", price: "Rp 28.000"),
+                    MenuItem(image: "F3", name: "Onigiri Salmon Mentai", des: "Nasi kepal dengan isian salmon dan saus mentai gurih, dibakar hingga harum.", price: "Rp 18.000"),
+                    MenuItem(image: "F4", name: "Soft Cream Matcha", des: "Es krim matcha dengan rasa teh hijau yang autentik dan creamy.", price: "Rp 12.000"),
+                    MenuItem(image: "F5", name: "Yakult Lemonade", des: "Minuman segar perpaduan Yakult dengan air lemon, kaya vitamin C.", price: "Rp 17.000")
+                    
+                ], price: "Rp 12.000 - Rp 28.000", hour: "08.00 - 17.00", phone: "089532281177", locationID: locations[3].id)
             ]
         ]
     }

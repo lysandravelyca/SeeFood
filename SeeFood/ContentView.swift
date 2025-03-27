@@ -3,6 +3,10 @@ import MapKit
 
 struct ContentView: View {
     
+    
+    let locations = LocationData.shared.locations
+    
+    //atur ambil map yg di coor mana
     @State private var position: MapCameraPosition = .region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: -6.301763, longitude: 106.652762),
@@ -10,7 +14,7 @@ struct ContentView: View {
         )
     )
     
-    let locations = LocationData.shared.locations
+    
     var body: some View {
         
         NavigationStack {
@@ -55,43 +59,13 @@ struct ContentView: View {
                     
                     ScrollView(.horizontal) {
                         
-                        HStack() {
-                            
-                            if let menuItem = getMenuItem(location: "GOP 9", tenantName: "Kasturi", index: 1) {
-                                
-                                // Gambar Menu
-                                Image(menuItem.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 130, height: 100)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                
-                                Spacer()
-                                // Deskripsi Menu
-                                VStack(alignment: .leading, spacing: 5) {
-                                    Text(menuItem.name)
-                                        .font(.headline)
-                                    
-                                    Text(menuItem.des)
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
-                                    
-                                    
-                                    
-                                    Text("Harga: \(menuItem.price)")
-                                        .font(.subheadline)
-                                        .bold()
-                                    
-                                }
-                            }
-                        }
+                       
                     }
                         
                         Text("Let's Explore Food in GOP")
                             .bold()
                             .font(.system(size: 26))
                             .padding(.top,20)
-                        
                         
                         Map(position: $position) {
                             
@@ -113,41 +87,24 @@ struct ContentView: View {
                         .padding(.top, 20)
                         
                     
-                                        
+                                    
                 }
                 .navigationBarHidden(true)
                 .padding(20)
             }
         }
     }
-    
-    func getMenuItem(location: String, tenantName: String, index: Int) -> MenuItem? {
-        guard let tenantsAtLocation = TenantData.shared.tenants[location] else {
-            return nil
-        }
-        
-        guard let tenant = tenantsAtLocation.first(where: { $0.name == tenantName }) else {
-            return nil
-        }
-        
-        guard index >= 0 && index < tenant.menuItems.count else {
-            return nil
-        }
-        
-        return tenant.menuItems[index]
-    }
-    
 }
-    #Preview {
-        ContentView()
-    }
+
+#Preview {
+    ContentView()
+}
     
-    
-    struct MyApp: App {
-        var body: some Scene {
-            WindowGroup {
-                ContentView()
-            }
+struct MyApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
         }
     }
+}
 

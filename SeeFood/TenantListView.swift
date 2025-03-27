@@ -16,14 +16,14 @@ struct TenantListView: View {
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16),
-           
+        
        ]
        
     var body: some View {
         
     NavigationStack{
 
-            ScrollView {
+            ScrollView{
                 
                 ZStack{
                     
@@ -60,6 +60,7 @@ struct TenantListView: View {
                 }
                
                 LazyVGrid(columns: columns, spacing: 16) {
+                    
                     ForEach(filteredTenants) { tenant in
                         NavigationLink(destination: TenantDetailView(location: location, tenant: tenant)) {
                             VStack {
