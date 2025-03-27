@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct FavoriteMenuView: View {
+    
     @ObservedObject var favoriteManager = FavoriteManager.shared
     var tenants = TenantData.shared.tenants
-    
     @State private var showAlert = false
     @State private var selectedMenu: MenuItem?
 
@@ -20,20 +20,28 @@ struct FavoriteMenuView: View {
                     .italic()
                     .padding()
             } else {
-                // Mengelompokkan menu favorit berdasarkan tenantID
-                let groupedMenus = Dictionary(grouping: favoriteManager.favoriteMenus, by: { $0.tenantID })
+                
+                let groupedMenus = Dictionary(grouping: favoriteManager.favoriteMenus, by: { menu in
+                    TenantData.shared.tenants
+                        .flatMap { $0.value }
+                        .first { tenant in tenant.menuItems.contains(where: { $0.name == menu.name }) }?
+                        .name ?? "Unknown"
+                })
+
                 
                 List {
-                    ForEach(groupedMenus.keys.sorted(), id: \.self) { tenantID in
-                        if let tenant = tenants.first(where: { $0.id == tenantID }) {
-                            // Menampilkan Nama Tenant hanya sekali d
+                    ForEach(groupedMenus.keys.sorted(), id: \.self) { tenantName in
+                        if let tenant = TenantData.shared.tenants
+                            .flatMap({ $0.value })
+                            .first(where: { $0.name == tenantName }) {
+                        
                             Text(tenant.name)
                                 .font(.headline)
                                 .padding(.vertical, 5)
                         }
                         
                         // Menampilkan menu-menu dari tenant
-                        ForEach(groupedMenus[tenantID] ?? [], id: \.menuId) { menu in
+                        ForEach(groupedMenus[tenantName] ?? [], id: \.menuId) { menu in
                             HStack(spacing: 15) {
                                 Image(menu.image)
                                     .resizable()
@@ -67,7 +75,6 @@ struct FavoriteMenuView: View {
                                             favoriteManager.removeFavorite(menu: menuToDelete)
                                         }
                                     }
-                                    
                                     Button("Batal", role: .cancel) {}
                                 } message: {
                                     Text("Apakah Anda yakin ingin menghapus menu ini dari favorit?")

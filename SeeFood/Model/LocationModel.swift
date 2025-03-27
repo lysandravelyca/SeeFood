@@ -8,19 +8,19 @@
 import SwiftData
 import Foundation
 
-@Model
-class Location : Identifiable {
+struct Location : Identifiable {
     var id: UUID
     var name: String
     var latitude: Double
     var longitude: Double
-
-
-    init(name: String ,latitude: Double, longitude: Double, tenants: [Tenant] = []) {
+    var image : String
+    
+    init(name: String, latitude: Double, longitude: Double, image: String) {
         self.id = UUID()
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
-
+        self.image = image
     }
 }
+

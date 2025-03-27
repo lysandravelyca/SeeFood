@@ -15,14 +15,14 @@ class MenuItem: Identifiable {
     var name: String
     var des: String
     var price: String
-    var tenantID: UUID
+//    var tenantID: UUID
 
-    init(image: String, name: String, des: String, price: String, tenantID: UUID) {
+    init(image: String, name: String, des: String, price: String) {
         self.image = image
         self.name = name
         self.des = des
         self.price = price
-        self.tenantID = tenantID
+//        self.tenantID = tenantID
     }
 }
 
@@ -36,13 +36,13 @@ class Tenant: Identifiable {
     
     // detail
     var menuItems: [MenuItem]
-    var price: Int
+    var price: String
     var hour: String
     var phone: String
     
     var locationID: UUID
     
-    init(name: String, image: String, menuItems: [MenuItem], price: Int, hour: String, phone: String, locationID: UUID) {
+    init(name: String, image: String, menuItems: [MenuItem], price: String, hour: String, phone: String, locationID: UUID) {
         self.id = UUID()
         self.name = name
         self.image = image
