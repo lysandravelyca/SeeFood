@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  SeeFood
-//
-//  Created by Lysandra Velyca on 14/03/25.
-//
-
 import SwiftUI
 import MapKit
 
@@ -14,27 +7,29 @@ struct ContentView: View {
 
     @ObservedObject var favoriteManager = FavoriteManager.shared
     
+    
+    let locations = LocationData.shared.locations
+    
+    //atur ambil map yg di coor mana
     @State private var position: MapCameraPosition = .region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: -6.301763, longitude: 106.652762),
             span: MKCoordinateSpan(latitudeDelta: 0.0065, longitudeDelta: 0.0065)
         )
     )
-  
-    let locations = LocationData.shared.locations
+    
     
     let tenantData = TenantData.shared
     
     var body: some View {
         
         NavigationStack {
-            
             ZStack{
-            
+                
                 Image("tes")
                     .resizable()
                     .ignoresSafeArea(.all)
-
+                
                 VStack(alignment: .leading) {
                     
                     HStack(alignment: .center){
@@ -66,7 +61,7 @@ struct ContentView: View {
                         .fontWeight(.bold)
                     Text("Try out these delicious menus 🍽️")
                         .foregroundStyle(.white)
-                       
+                    
                     
                     ScrollView(.horizontal) {
                         HStack(spacing: 12) {
@@ -159,26 +154,19 @@ struct ContentView: View {
                     .frame(height: 400)
                    
                     
-                    Spacer()
-                            .padding(.top, 10)
+                                    
                 }
-              
                 .navigationBarHidden(true)
                 .padding(20)
-                
             }
-   
         }
     }
-   }
-
-
+}
 
 #Preview {
     ContentView()
 }
-
-
+    
 struct MyApp: App {
     var body: some Scene {
         WindowGroup {
