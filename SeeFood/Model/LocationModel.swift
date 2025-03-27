@@ -23,4 +23,5 @@ struct Location : Identifiable {
         self.image = image
     }
 }
+
     
