@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  SeeFood
-//
-//  Created by Lysandra Velyca on 14/03/25.
-//
-
 import SwiftUI
 import MapKit
 
@@ -16,23 +9,22 @@ struct ContentView: View {
             span: MKCoordinateSpan(latitudeDelta: 0.0065, longitudeDelta: 0.0065)
         )
     )
-  
-    let locations = LocationData.shared.locations
     
+    let locations = LocationData.shared.locations
     var body: some View {
         
         NavigationStack {
             
             ZStack{
-            
+                
                 Image("tes")
                     .resizable()
                     .ignoresSafeArea(.all)
-
+                
                 VStack(alignment: .leading) {
                     
                     HStack{
-                       
+                        
                         Text("Welcome to SeeFood,")
                             .bold()
                             .font(.system(size: 18))
@@ -56,91 +48,106 @@ struct ContentView: View {
                         .bold()
                         .font(.system(size: 24))
                         .foregroundStyle(.white)
-//                        .padding(.top, -12)
+                    
                     Text("Try out these delicious menus🍽️")
                         .foregroundStyle(.white)
-                       
                     
-                    ScrollView(.horizontal){
+                    
+                    ScrollView(.horizontal) {
                         
-                        HStack(spacing: 12){
+                        HStack() {
                             
-                            Image("pohon")
-                                .resizable()
-                                .frame(width: 230, height: 150)
-    //                            .border(.green)
-                            
-                            Image("kantin")
-                                .resizable()
-                            //                               .aspectRatio(contentMode: .fill)
-                                .frame(width: 230, height: 150)
-    //                            .border(.green)
-                            
-                            Image("logo")
-                                .resizable()
-                            //                               .aspectRatio(contentMode: .fill)
-                                .frame(width: 230, height: 150)
-    //                            .border(.green)
-                            
-                            
-                            
-                        }
-                        .padding(.bottom, 12)
-                        
-                    }
-                    
-                    Text("Let's Explore Food in GOP")
-//                        .font(.title)
-                        .bold()
-                        .font(.system(size: 26))
-                    
-                    
-                    Map(position: $position) {
-                        
-                        ForEach(locations) { location in
-                            Annotation(location.name, coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)) {
-                                NavigationLink(destination: TenantListView(location: location)) {
-                                    
+                            if let menuItem = getMenuItem(location: "GOP 9", tenantName: "Kasturi", index: 1) {
                                 
+                                // Gambar Menu
+                                Image(menuItem.image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 130, height: 100)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                
+                                Spacer()
+                                // Deskripsi Menu
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text(menuItem.name)
+                                        .font(.headline)
                                     
-                                    VStack {
-                                        Image(systemName: "mappin.circle.fill")
-                                            .resizable()
-                                            .frame(width: 32, height: 32)
-                                            .foregroundColor(.red)
-                                    }
+                                    Text(menuItem.des)
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                    
+                                    
+                                    
+                                    Text("Harga: \(menuItem.price)")
+                                        .font(.subheadline)
+                                        .bold()
+                                    
                                 }
                             }
                         }
                     }
-                    .frame(height: 400)
-                   
+                        
+                        Text("Let's Explore Food in GOP")
+                            .bold()
+                            .font(.system(size: 26))
+                            .padding(.top,20)
+                        
+                        
+                        Map(position: $position) {
+                            
+                            ForEach(locations) { location in
+                                Annotation(location.name, coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)) {
+                                    NavigationLink(destination: TenantListView(location: location)) {
+                                        VStack {
+                                            Image(systemName: "mappin.circle.fill")
+                                                .resizable()
+                                                .frame(width: 32, height: 32)
+                                                .foregroundColor(.red)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .frame(height: 400)
+                        Spacer()
+                        .padding(.top, 20)
+                        
                     
-                    Spacer()
-                            .padding(.top, 10)
+                                        
                 }
-              
                 .navigationBarHidden(true)
                 .padding(20)
-                
             }
-   
         }
     }
-   }
-
-
-
-#Preview {
-    ContentView()
+    
+    func getMenuItem(location: String, tenantName: String, index: Int) -> MenuItem? {
+        guard let tenantsAtLocation = TenantData.shared.tenants[location] else {
+            return nil
+        }
+        
+        guard let tenant = tenantsAtLocation.first(where: { $0.name == tenantName }) else {
+            return nil
+        }
+        
+        guard index >= 0 && index < tenant.menuItems.count else {
+            return nil
+        }
+        
+        return tenant.menuItems[index]
+    }
+    
 }
-
-
-struct MyApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
+    #Preview {
+        ContentView()
+    }
+    
+    
+    struct MyApp: App {
+        var body: some Scene {
+            WindowGroup {
+                ContentView()
+            }
         }
     }
-}
 
