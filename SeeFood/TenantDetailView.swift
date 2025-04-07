@@ -206,7 +206,7 @@ class FavoriteManager: ObservableObject {
     static let shared = FavoriteManager()
     
     // array yg simpen menu yg di favoritin
-    var favoriteMenus: [MenuItem] = []
+    @Published var favoriteMenus: [MenuItem] = []
     
      init() {}
 
