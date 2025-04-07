@@ -26,52 +26,53 @@ struct ContentView: View {
         NavigationStack {
             ZStack{
                 
-                Image("tes")
+                Image("BG-Upd")
                     .resizable()
-                    .ignoresSafeArea(.all)
+                    .ignoresSafeArea()
                 
                 VStack(alignment: .leading) {
                     
                     HStack(alignment: .center){
-                       
-                        Text("Welcome to SeeFood,")
-                            .bold()
-                            .font(.system(size: 18))
-                            .padding(.bottom, -10)
-                            .foregroundStyle(.white)
+                        VStack(alignment: .leading){
+                            Text("Recommended Menu")
+                                .bold()
+                                .font(.system(size: 28))
+                                .foregroundStyle(.white)
+                                .fontWeight(.bold)
+                            Text("Top 4 Menus of this Week 🍽️")
+                                .foregroundStyle(.white)
+                                .fontWeight(.light)
+                        }
+                        
                         
                         Spacer()
                         
                         NavigationLink(destination: FavoriteMenuView()) {
                             Image(systemName: "star.fill")
-                                .font(.system(size: 20))
-                                .foregroundColor(.orange)
-                                .frame(width: 40, height: 40)
-                                .background(.white)
+                                .font(.system(size: 26))
+                                .foregroundColor(.white)
+                                .frame(width: 45, height: 45)
+                                .background(.white.opacity(0.5))
                                 .clipShape(Circle())
                                 .padding(.trailing, 10)
                                 .padding(.bottom, 5)
+                                
                         }
                     }
                     
-                    Text("This Week's Recommendation")
-                        .bold()
-                        .font(.system(size: 22))
-                        .foregroundStyle(.white)
-                        .fontWeight(.bold)
-                    Text("Try out these delicious menus 🍽️")
-                        .foregroundStyle(.white)
+                    
                     
                     
                     ScrollView(.horizontal) {
                         HStack(spacing: 12) {
                             ForEach(tenantData.tenants.flatMap { $0.value }.prefix(4)) { tenant in
-                                HStack(alignment: .top, spacing: 10) {
+                                HStack(alignment: .center, spacing: 10) {
                                     Image(tenant.image)
                                         .resizable()
                                         .scaledToFill()
-                                        .frame(width: 100, height: 100)
+                                        .frame(width: 130, height: 130)
                                         .cornerRadius(8)
+                                        .shadow(radius: 3)
                                     
                                     VStack(alignment: .leading) {
                                         VStack(alignment: .leading) {
@@ -94,7 +95,7 @@ struct ContentView: View {
                                             
                                         }
                                         
-                                        Spacer()
+//                                        Spacer()
                                         VStack(alignment: .leading) {
                                             HStack {
                                                 Image(systemName: "tag.fill")
@@ -108,14 +109,9 @@ struct ContentView: View {
                                             }
                                         }
                                     }
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName:"star")
-                                        .font(.system(size: 20))
-                                        .foregroundColor(.gray)
+                                    .frame(width: 140)
                                 }
-                                .frame(width: 290)
+//                                .frame()
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 8)
                                 .background(Color.white)
@@ -128,7 +124,6 @@ struct ContentView: View {
                                         
                     
                     Text("Let's Explore Food in GOP")
-//                        .font(.title)
                         .bold()
                         .font(.system(size: 20))
                         .fontWeight(.bold)

@@ -68,10 +68,10 @@ struct FavoriteMenuView: View {
                                 .bold()
                                 .padding(.top,30)
                             
-                            Text("The following menu is sorted by distance closest to you")
-                                .fontWeight(.semibold)
-                                .foregroundColor(.gray)
-                                .padding(.bottom, 20)
+//                            Text("The following menu is sorted by distance closest to you")
+//                                .fontWeight(.semibold)
+//                                .foregroundColor(.gray)
+//                                .padding(.bottom, 20)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading) 
                         .padding(.horizontal, 50)
@@ -100,9 +100,9 @@ struct FavoriteMenuView: View {
                                         VStack(alignment: .leading) {
                                             Text(menu.name)
                                                 .font(.headline)
-                                            Text(menu.des)
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
+//                                            Text(menu.des)
+//                                                .font(.subheadline)
+//                                                .foregroundColor(.gray)
                                             Text("Harga: \(menu.price)")
                                                 .font(.subheadline)
                                                 .bold()
@@ -117,15 +117,15 @@ struct FavoriteMenuView: View {
                                             Image(systemName: "trash")
                                                 .foregroundColor(.red)
                                         }
-                                        .alert("Hapus Favorit", isPresented: $showAlert) {
-                                            Button("Hapus", role: .destructive) {
+                                        .alert("Hapus Menu Favorit", isPresented: $showAlert) {
+                                            Button("Yakin", role: .destructive) {
                                                 if let menuToDelete = selectedMenu {
                                                     favoriteManager.removeFavorite(menu: menuToDelete)
                                                 }
                                             }
                                             Button("Batal", role: .cancel) {}
                                         } message: {
-                                            Text("Apakah Anda yakin ingin menghapus menu ini dari favorit?")
+                                            Text("Yakin mau hapus menu ini dari favorit?")
                                         }
                                     }
                                     .padding(.vertical, 5)

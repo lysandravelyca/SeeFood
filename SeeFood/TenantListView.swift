@@ -55,11 +55,11 @@ struct TenantListView: View {
                     Text(location.name)
                         .bold()
                         .font(.title)
-                        .padding(.top, 200)
+                        .padding(.top, 250)
                     
                 }
                
-                LazyVGrid(columns: columns, spacing: 16) {
+                LazyVGrid(columns: columns, spacing: 24) {
                     
                     ForEach(filteredTenants) { tenant in
                         NavigationLink(destination: TenantDetailView(location: location, tenant: tenant)) {
@@ -67,24 +67,32 @@ struct TenantListView: View {
                                 
                                 Image(tenant.image)
                                     .resizable()
-                                    .frame(width: 140, height: 130 )
+                                    .scaledToFill()
+                                    .frame(width: 160, height: 160 )
                                 
                                 Text(tenant.name)
                                     .bold()
                                     .foregroundColor(.black)
+                                    .padding(.bottom, 8)
+//                                    .padding(.horizontal, 16)
                                     
                             }
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.gray.opacity(0.2)))
+                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.orange))
                         }
                     }
+                    .cornerRadius(12)
+                    .shadow(radius: 2)
                 }
                 .padding()
+                .padding(.bottom, 32)
             }
-            .frame(height: 905)
+            .ignoresSafeArea(.all)
             .navigationBarHidden(true)
+            
         }
+    
     }
+    
 }
 
 #Preview {

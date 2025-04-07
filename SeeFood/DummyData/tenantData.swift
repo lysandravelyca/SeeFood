@@ -83,6 +83,35 @@ class TenantData {
             
             "GOP 6": [
                 
+                Tenant(name: "Nasi Kapau", image: "NK", menuItems: [
+                    
+                    MenuItem(image: "NK1", name: "Rendang Dagimg", des: "Daging sapi dengan bumbu khas Minang.", price: "Rp 35.000"),
+                    MenuItem(image: "NK2", name: "Dendeng Batokok", des: "Irisan tipis daging sapi dengan sambal hijau.", price: "Rp 30.000"),
+                    MenuItem(image: "NK3", name: "Ayam Pop", des: "Ayam rebus dengan bumbu gurih alami.", price: "Rp 20.000"),
+                    MenuItem(image: "NK4", name: "Telur Dadar Padang", des: "Telur dadar dengan bumbu khas Padang.", price: "Rp 18.000"),
+                    MenuItem(image: "NK5", name: "Nasi Kapau", des: "Nasi putih khas Minang.", price: "Rp 22.000")
+    
+                ], price: "Rp 15.000 - Rp 35.000", hour: "08.00 - 17.00", phone: "089743217755", locationID: locations[1].id),
+                
+                Tenant(name: "Warkop Paris", image: "WP", menuItems: [
+                    
+                    MenuItem(image: "WP1", name: "Kopi Hitam Tubruk", des: "Kopi hitam tanpa ampas untuk penikmat kopi.", price: "Rp 35.000"),
+                    MenuItem(image: "WP2", name: "Roti Bakar Paris", des: "Roti bakar dengan bumbu rahasia dari Paris.", price: "Rp 15.000"),
+                    MenuItem(image: "WP3", name: "Mie Instan Original", des: "Mie instan yang rasanya nendang.", price: "Rp 20.000"),
+                    MenuItem(image: "WP4", name: "Nasi Goreng Rempah", des: "Nasi goreng dengan bumbu rempah yang nikmat.", price: "Rp 18.000"),
+                    MenuItem(image: "WP5", name: "Es Teh Lemon Madu", des: "Es teh dengan potongan lemon dan madu.", price: "Rp 22.000")
+    
+                ], price: "Rp 15.000 - Rp 35.000", hour: "08.00 - 17.00", phone: "089743217755", locationID: locations[1].id),
+                
+                Tenant(name: "Nasi Hainam", image: "NH", menuItems: [
+                    
+                    MenuItem(image: "NH1", name: "NH Ayam Rebus", des: "Nasi bumbu khas dengan ayam rebus yang lembut.", price: "Rp 35.000"),
+                    MenuItem(image: "NH2", name: "NH Ayam Panggang", des: "Nasi bumbu khas dengan ayam panggang yanng gurih.", price: "Rp 15.000"),
+                    MenuItem(image: "NH3", name: "NH Bebek Panggang", des: "Nasi bumbu khas dengan bebek panggang yang gurih.", price: "Rp 20.000"),
+                    MenuItem(image: "NH4", name: "NH Seafood", des: "Nasi bumbu khas dengan udang, cumi, dan ikan tumis.", price: "Rp 18.000"),
+    
+                ], price: "Rp 15.000 - Rp 35.000", hour: "08.00 - 17.00", phone: "089743217755", locationID: locations[1].id),
+                
                 Tenant(name: "Lawson", image: "L", menuItems: [
                     
                     MenuItem(image: "L1", name: "Chicken Katsu Bento", des: "Nasi dengan ayam katsu crispy, saus tonkatsu, salad segar, dan telur dadar.", price: "Rp 35.000"),
@@ -105,14 +134,15 @@ class TenantData {
                 ], price: "Rp 12.000 - Rp 35.000", hour: "08.00 - 13.00", phone: "089543281177", locationID: locations[3].id),
                 
                 Tenant(name: "Family Mart", image: "F", menuItems: [
-                    MenuItem(image: "F1", name: "karaage Don", des: "Nasi dengan ayam goreng karaage renyah, disajikan dengan mayones pedas dan nori.", price: "Rp 23.000"),
+                    MenuItem(image: "F1", name: "Karaage Don", des: "Nasi dengan ayam goreng karaage renyah, disajikan dengan mayones pedas dan nori.", price: "Rp 23.000"),
                     MenuItem(image: "F2", name: "Beef Yakiniku Bento", des: "Nasi dengan daging sapi tumis saus yakiniku, lengkap dengan sayur dan telur.", price: "Rp 28.000"),
                     MenuItem(image: "F3", name: "Onigiri Salmon Mentai", des: "Nasi kepal dengan isian salmon dan saus mentai gurih, dibakar hingga harum.", price: "Rp 18.000"),
                     MenuItem(image: "F4", name: "Soft Cream Matcha", des: "Es krim matcha dengan rasa teh hijau yang autentik dan creamy.", price: "Rp 12.000"),
                     MenuItem(image: "F5", name: "Yakult Lemonade", des: "Minuman segar perpaduan Yakult dengan air lemon, kaya vitamin C.", price: "Rp 17.000")
                     
                 ], price: "Rp 12.000 - Rp 28.000", hour: "08.00 - 17.00", phone: "089532281177", locationID: locations[3].id)
-            ]
+                ],
+            
             "The Breeze": [
                 Tenant(name: "RM Padang Salero", image: "RM", menuItems: [
                     
@@ -122,9 +152,9 @@ class TenantData {
                     MenuItem(image: "RM-4", name: "Gulai Tunjang", des: "Kikil sapi dengan kuah santan", price: "Rp 15.000")
                     
                     
-                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "-", locationID: locations[2].id),
+                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "0895432819890", locationID: locations[2].id),
                 
-                Tenant(name: "Mama Djempol", image: "MD", menuItems: [
+                Tenant(name: "Mama Djempol", image: "M", menuItems: [
                     
                     MenuItem(image: "MD-1", name: "Ayam Sambel Bawang", des: "Nasi ayam sambal bawang pedas", price: "Rp 12.000"),
                     MenuItem(image: "MD-2", name: "Lele Goreng Kremes", des: "Lele goreng renyah dengan kremesan", price: "Rp 15.000"),
@@ -132,7 +162,7 @@ class TenantData {
                     MenuItem(image: "MD-4", name: "Nasi Uduk Komplit", des: "Nasi uduk dengan ayam, orek, dadar dan kacang", price: "Rp 15.000")
                     
                     
-                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "-", locationID: locations[2].id),
+                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "089543284762", locationID: locations[2].id),
                 
                 Tenant(name: "Warkop Indra", image: "Wkp", menuItems: [
                     
@@ -142,9 +172,9 @@ class TenantData {
                     MenuItem(image: "W-4", name: "Pisang Goreng Karamel", des: "Pisang goreng dengan lelehan karamel", price: "Rp 15.000")
                     
                     
-                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "-", locationID: locations[2].id),
+                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "089543983473", locationID: locations[2].id),
                 
-                Tenant(name: "Nasi Rames Bu Imas", image: "NR", menuItems: [
+                Tenant(name: "Nasi Rames Bu Imas", image: "NR6", menuItems: [
                     
                     MenuItem(image: "NR-1", name: "Nasi Rame Komplit", des: "Nasi dengan ayam, tahu, tempe, sayur, dan sambal", price: "Rp 12.000"),
                     MenuItem(image: "NR-2", name: "Nasi Kuning Komplit", des: "Nasi kuning dengan ayam, telur, tahu, tempe, dan sambal", price: "Rp 15.000"),
@@ -152,7 +182,7 @@ class TenantData {
                     MenuItem(image: "NR-4", name: "Perkedel Kentang", des: "Perkedel kentang lembut dengan bumbu spesial", price: "Rp 15.000")
                     
                     
-                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "-", locationID: locations[2].id),
+                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "08954328009", locationID: locations[2].id),
                 
                 Tenant(name: "Uena", image: "Uena", menuItems: [
                     
@@ -162,7 +192,7 @@ class TenantData {
                     MenuItem(image: "U-4", name: "Es Teh Tarik", des: "Es teh dengan kental manis", price: "Rp 15.000")
                     
                     
-                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "-", locationID: locations[2].id),
+                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "089543281100", locationID: locations[2].id),
                 
                 Tenant(name: "Roti Bakar Tangerang", image: "RB", menuItems: [
                     
@@ -172,17 +202,17 @@ class TenantData {
                     MenuItem(image: "RB-4", name: "Es Milo Dino", des: "Es milo dengan coklat bubuk melimpah", price: "Rp 15.000")
                     
                     
-                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "-", locationID: locations[2].id),
+                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "0895430980177", locationID: locations[2].id),
                 
-                Tenant(name: "Nasi Kapau Bundo Kito", image: "NK", menuItems: [
+                Tenant(name: "Nasi Kapau Bundo Kito", image: "NKA", menuItems: [
                     
-                    MenuItem(image: "NK-1", name: "Gulai Tambusu", des: "Usus sapi dengan isi tahu dan telur", price: "Rp 12.000"),
-                    MenuItem(image: "NK-2", name: "Ikan Asam Padeh", des: "Kopi susu segar", price: "Rp 15.000"),
-                    MenuItem(image: "NK-3", name: "Dendeng Batokok", des: "Kopi susu gula aren", price: "Rp 17.000"),
-                    MenuItem(image: "NK-4", name: "Sayur Kapau", des: "Coklat dengan susu segar", price: "Rp 15.000")
+                    MenuItem(image: "NKA-1", name: "Gulai Tambusu", des: "Usus sapi dengan isi tahu dan telur", price: "Rp 12.000"),
+                    MenuItem(image: "NKA-2", name: "Ikan Asam Padeh", des: "Kopi susu segar", price: "Rp 15.000"),
+                    MenuItem(image: "NKA-3", name: "Dendeng Batokok", des: "Kopi susu gula aren", price: "Rp 17.000"),
+                    MenuItem(image: "NKA-4", name: "Sayur Kapau", des: "Coklat dengan susu segar", price: "Rp 15.000")
                     
                     
-                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "-", locationID: locations[2].id),
+                ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "0895438478374", locationID: locations[2].id),
                 
             ]
         ]
