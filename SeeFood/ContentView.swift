@@ -10,7 +10,8 @@ struct ContentView: View {
     
     let locations = LocationData.shared.locations
     
-    //atur ambil map yg di coor mana
+    let locationManager = CLLocationManager()
+    
     @State private var position: MapCameraPosition = .region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: -6.301763, longitude: 106.652762),
@@ -39,7 +40,7 @@ struct ContentView: View {
                                 .font(.system(size: 28))
                                 .foregroundStyle(.white)
                                 .fontWeight(.bold)
-                            Text("Top 4 Menus of this Week 🍽️")
+                            Text("Our top 4 menus for you today")
                                 .foregroundStyle(.white)
                                 .fontWeight(.light)
                         }
@@ -66,8 +67,10 @@ struct ContentView: View {
                     ScrollView(.horizontal) {
                         HStack(spacing: 12) {
                             ForEach(tenantData.tenants.flatMap { $0.value }.prefix(4)) { tenant in
+                                let cardMenuItem = tenant.menuItems.randomElement()
                                 HStack(alignment: .center, spacing: 10) {
-                                    Image(tenant.image)
+                                    
+                                    Image(cardMenuItem?.image ?? tenant.image)
                                         .resizable()
                                         .scaledToFill()
                                         .frame(width: 130, height: 130)
@@ -76,7 +79,7 @@ struct ContentView: View {
                                     
                                     VStack(alignment: .leading) {
                                         VStack(alignment: .leading) {
-                                            Text(tenant.menuItems.first?.name ?? tenant.name) 
+                                            Text(cardMenuItem?.name ?? tenant.name)
                                                 .font(.system(size: 20))
                                                 .fontWeight(.bold)
                                                 .foregroundColor(.black)
@@ -95,7 +98,6 @@ struct ContentView: View {
                                             
                                         }
                                         
-//                                        Spacer()
                                         VStack(alignment: .leading) {
                                             HStack {
                                                 Image(systemName: "tag.fill")
@@ -103,7 +105,7 @@ struct ContentView: View {
                                                     .foregroundColor(.green)
                                                     .frame(width: 14, height: 14)
                                                 
-                                                Text("Rp. \(tenant.menuItems.first?.price ?? String(tenant.price))")
+                                                Text("Rp. \(cardMenuItem?.price ?? String(tenant.price))")
                                                     .font(.caption)
                                                     .foregroundColor(.green)
                                             }
@@ -111,7 +113,6 @@ struct ContentView: View {
                                     }
                                     .frame(width: 140)
                                 }
-//                                .frame()
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 8)
                                 .background(Color.white)
@@ -134,8 +135,6 @@ struct ContentView: View {
                             Annotation(location.name, coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)) {
                                 NavigationLink(destination: TenantListView(location: location)) {
                                     
-                                
-                                    
                                     VStack {
                                         Image(systemName: "mappin.circle.fill")
                                             .resizable()
@@ -144,7 +143,14 @@ struct ContentView: View {
                                     }
                                 }
                             }
+                            
                         }
+                        UserAnnotation()
+                        
+                    }
+                    .tint(.green)
+                    .onAppear {
+                        locationManager.requestWhenInUseAuthorization()
                     }
                     .frame(height: 400)
                    

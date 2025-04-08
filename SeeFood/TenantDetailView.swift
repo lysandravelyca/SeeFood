@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct TenantDetailView: View {
     
     @Environment(\.dismiss) var dismiss
@@ -10,6 +11,10 @@ struct TenantDetailView: View {
     @State private var showRedirectAlert = false
     @State private var isRedirecting = false
     
+    @State private var showToast = false
+    @State private var toastMessage = ""
+
+    
     var body: some View {
             NavigationStack {
                 ZStack {
@@ -19,8 +24,9 @@ struct TenantDetailView: View {
                         .scaledToFill()
                         .edgesIgnoringSafeArea(.all)
                         .padding(.bottom, -200)
-
+                    
                     ScrollView {
+                        
                         HStack(alignment: .center) {
                             //button back
                             Button {
@@ -46,160 +52,209 @@ struct TenantDetailView: View {
                                     .fontWeight(.bold)
                                     .multilineTextAlignment(.center)
                                     .frame(width: 200)
-
-                                Text(location.name)
-                                    .font(.subheadline)
-                                    .fontWeight(.medium)
-                                    .foregroundStyle(.gray)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.bottom, 20)
+                                
+                                //                                Text(location.name)
+                                //                                    .font(.subheadline)
+                                //                                    .fontWeight(.medium)
+                                //                                    .foregroundStyle(.gray)
+                                //                                    .multilineTextAlignment(.center)
+                                //                                    .padding(.bottom, 20)
                             }
                             Spacer()
                             Text("          ")
-                                
+                            
                         }
                         .padding(.horizontal,45)
                         
                         
-
+                        
+                        HStack {
+                            
+                            Image(tenant.image)
+                                .resizable()
+                                .scaledToFill() // Ensures the image fills the frame without distortion
+                                .frame(width: 155, height: 155) // Defines the exact size
+                                .clipShape(RoundedRectangle(cornerRadius: 10)) // Clips the image
+                                .overlay( // Adds a gray border
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.gray, lineWidth: 2))
+                                .clipped() // Ensures anything outside the frame is hidden
+                            
+                            
+                            // Jam Operasional, Kontak, dan Harga
+                            VStack(alignment: .leading){
                                 HStack {
-
-                                    Image(tenant.image)
-                                        .resizable()
-                                        .scaledToFill() // Ensures the image fills the frame without distortion
-                                        .frame(width: 155, height: 155) // Defines the exact size
-                                        .clipShape(RoundedRectangle(cornerRadius: 10)) // Clips the image
-                                        .overlay( // Adds a gray border
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color.gray, lineWidth: 2))
-                                        .clipped() // Ensures anything outside the frame is hidden
-
-
-                                    // Jam Operasional, Kontak, dan Harga
-                                    VStack(alignment: .leading){
-                                        HStack {
-                                            Image(systemName: "clock")
-                                                .font(.system(size: 16))
-                                                .foregroundStyle(.green)
-                                                .frame(width: 30, height: 30)
-                                            Text(tenant.hour)
-                                                .font(.system(size: 14))
-//                                                .fontWeight(.semibold)
-                                        }
-
-                                        HStack {
-                                            Image(systemName: "phone.fill")
-                                                .font(.system(size: 16))
-                                                .foregroundStyle(.green)
-                                                .frame(width: 30, height: 30)
-                                            Text(tenant.phone)
-                                                .font(.system(size: 14))
-//                                                .fontWeight(.semibold)
-                                        }
-
-                                        HStack {
-                                            Image(systemName: "dollarsign")
-                                                .font(.system(size: 16))
-                                                .foregroundStyle(.green)
-                                                .frame(width: 30, height: 30)
-                                            Text("Rp15.000 - Rp25.000")
-                                                .font(.system(size: 14))
-//                                                .fontWeight(.semibold)
-                                        }
-                                    }
-//                                    .frame(width: 20)
-                                
-
+                                    Image(systemName: "clock")
+                                        .font(.system(size: 16))
+                                        .foregroundStyle(.green)
+                                        .frame(width: 30, height: 30)
+                                    Text(tenant.hour)
+                                        .font(.system(size: 14))
+                                    //                                                .fontWeight(.semibold)
                                 }
-                                .frame(width: 350)
-
-                                VStack(alignment: .leading, spacing: 5) {
-
-                                    // Daftar Menu
-                                    if tenant.menuItems.isEmpty {
-                                        Text("Tidak ada menu yang tersedia")
-                                            .foregroundColor(.gray)
-                                            .italic()
-                                    } else {
-                                        VStack(alignment: .leading, spacing: 10) {
-                                            Text("Menu")
-                                                .font(.title)
-                                                .fontWeight(.bold)
-                                                .padding(.bottom, 5)
-
-                                            // Iterasi menu
-                                            ForEach(tenant.menuItems.indices, id: \.self) { index in
-                                                HStack() {
-                                                    // Gambar Menu
-                                                    Image(tenant.menuItems[index].image)
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: 130, height: 100)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-
-//                                                    Spacer()
-                                                    // Deskripsi Menu
-                                                    VStack(alignment: .leading, spacing: 8) {
-                                                        Text(tenant.menuItems[index].name)
-                                                            .font(.headline)
-
-//                                                        Text(tenant.menuItems[index].des)
-//                                                            .font(.subheadline)
-//                                                            .foregroundColor(.gray)
-
-                                                        Text("Harga: \(tenant.menuItems[index].price)")
-                                                            .font(.subheadline)
-                                                            .bold()
-                                                    }
-                                                    Spacer()
-
-                                                    // Toggle Favorite
-                                                    Button(action: {
-                                                        let isNowFavorite = toggleFavorite(menu: tenant.menuItems[index])
-//                                                        alertMessage = isNowFavorite ? "Yeay, menu favoritmu sudah ditambahkan!" : "Menu ini sudah dihapus dari daftar favoritmu."
-//
-//                                                        if isNowFavorite {
-//                                                            showRedirectAlert = true
-//                                                        }
-
-                                                    }){
-                                                        Image(systemName: favoriteManager.isFavorite(menu: tenant.menuItems[index]) ? "star.fill" : "star")
-                                                            .font(.system(size: 24))
-                                                            .foregroundColor(favoriteManager.isFavorite(menu: tenant.menuItems[index]) ? .yellow : .gray)
-//                                                    }
-//                                                    .alert(isPresented: $showRedirectAlert) {
-//                                                        Alert(
-//                                                            title: Text("Menu berhasil Ditambahkan!"),
-//                                                            message: Text("Yuk lihat daftar favoritmu!"),
-//                                                            primaryButton: .default(Text("Lihat"), action: {
-//                                                                isRedirecting = true // Mengarahkan ke FavoriteMenuView
-//                                                            }),
-//                                                            secondaryButton: .cancel(Text("Nanti Aja"))
-////                                                                              .font(.system(size: 18))
-//                                                        )
+                                
+                                HStack {
+                                    Image(systemName: "phone.fill")
+                                        .font(.system(size: 16))
+                                        .foregroundStyle(.green)
+                                        .frame(width: 30, height: 30)
+                                    Text(tenant.phone)
+                                        .font(.system(size: 14))
+                                    //                                                .fontWeight(.semibold)
+                                }
+                                
+                                HStack {
+                                    Image(systemName: "dollarsign")
+                                        .font(.system(size: 16))
+                                        .foregroundStyle(.green)
+                                        .frame(width: 30, height: 30)
+                                    Text("Rp15.000 - Rp25.000")
+                                        .font(.system(size: 14))
+                                    //                                                .fontWeight(.semibold)
+                                }
+                            }
+                            //                                    .frame(width: 20)
+                            
+                            
+                        }
+                        .frame(width: 350)
+                        
+                        VStack(alignment: .leading, spacing: 5) {
+                            
+                            // Daftar Menu
+                            if tenant.menuItems.isEmpty {
+                                Text("Tidak ada menu yang tersedia")
+                                    .foregroundColor(.gray)
+                                    .italic()
+                            } else {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text("Menu")
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                        .padding(.bottom, 5)
+                                    
+                                    // Iterasi menu
+                                    ForEach(tenant.menuItems.indices, id: \.self) { index in
+                                        HStack() {
+                                            // Gambar Menu
+                                            Image(tenant.menuItems[index].image)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 130, height: 100)
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            
+                                            //                                                    Spacer()
+                                            // Deskripsi Menu
+                                            VStack(alignment: .leading, spacing: 8) {
+                                                Text(tenant.menuItems[index].name)
+                                                    .font(.headline)
+                                                
+                                                //                                                        Text(tenant.menuItems[index].des)
+                                                //                                                            .font(.subheadline)
+                                                //                                                            .foregroundColor(.gray)
+                                                
+                                                Text("\(tenant.menuItems[index].price)")
+                                                    .font(.subheadline)
+                                                    .bold()
+                                            }
+                                            Spacer()
+                                            
+                                            // Toggle Favorite
+                                            Button(action: {
+                                                //                                                        let isNowFavorite = toggleFavorite(menu: tenant.menuItems[index])
+                                                let isNowFavorite = toggleFavorite(menu: tenant.menuItems[index])
+                                                toastMessage = isNowFavorite ? "Menu ditambahkan ke favorit!" : "Menu dihapus dari favorit!"
+                                                withAnimation {
+                                                    showToast = true
+                                                }
+                                                
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                                    withAnimation {
+                                                        showToast = false
                                                     }
                                                 }
-                                                .frame(width: 350)
-                                                .padding(.vertical, 10)
-
-                                                if index < tenant.menuItems.count - 1 {
-                                                    Divider()
-                                                        .background(Color.gray)
-                                                        .padding(.horizontal, -10)
-                                                }
+                                                
+                                                //                                                        alertMessage = isNowFavorite ? "Yeay, menu favoritmu sudah ditambahkan!" : "Menu ini sudah dihapus dari daftar favoritmu."
+                                                //
+                                                //                                                        if isNowFavorite {
+                                                //                                                            showRedirectAlert = true
+                                                //                                                        }
+                                                
+                                            }){
+                                                Image(systemName: favoriteManager.isFavorite(menu: tenant.menuItems[index]) ? "star.fill" : "star")
+                                                    .font(.system(size: 24))
+                                                    .foregroundColor(favoriteManager.isFavorite(menu: tenant.menuItems[index]) ? .yellow : .gray)
+                                                //                                                    }
+                                                //                                                    .alert(isPresented: $showRedirectAlert) {
+                                                //                                                        Alert(
+                                                //                                                            title: Text("Menu berhasil Ditambahkan!"),
+                                                //                                                            message: Text("Yuk lihat daftar favoritmu!"),
+                                                //                                                            primaryButton: .default(Text("Lihat"), action: {
+                                                //                                                                isRedirecting = true // Mengarahkan ke FavoriteMenuView
+                                                //                                                            }),
+                                                //                                                            secondaryButton: .cancel(Text("Nanti Aja"))
+                                                ////                                                                              .font(.system(size: 18))
+                                                //                                                        )
                                             }
                                         }
+                                        .frame(width: 350)
+                                        .padding(.vertical, 10)
+                                        
+                                        if index < tenant.menuItems.count - 1 {
+                                            Divider()
+                                                .background(Color.gray)
+                                                .padding(.horizontal, -10)
+                                        }
                                     }
-
                                 }
-                                .padding()
-                                .frame(width: 380)
-                                .frame(maxWidth: .infinity)
                             }
-                            .navigationDestination(isPresented: $isRedirecting) {
-                                FavoriteMenuView()
-                            }
+                            
                         }
+                        .padding()
+                        .frame(width: 380)
+                        .frame(maxWidth: .infinity)
+                    }
+                    .navigationDestination(isPresented: $isRedirecting) {
+                        FavoriteMenuView()
+                    }
+                    if showToast {
+                        VStack {
+                            Spacer()
+
+                            HStack(spacing: 12) {
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.white)
+                                
+                                Text(toastMessage)
+                                    .font(.system(size: 14, weight: .medium))
+                                    .foregroundColor(.white)
+                                    .lineLimit(2)
+
+                                Spacer()
+
+                                Button(action: {
+                                    isRedirecting = true
+                                    showToast = false // Tutup toast setelah klik
+                                }) {
+                                    Text("Lihat")
+                                        .font(.system(size: 14, weight: .semibold))
+                                        .foregroundColor(.white)
+                                }
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 12)
+                            .background(Color.black.opacity(0.75))
+                            .cornerRadius(16)
+                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 3)
+                            .padding(.horizontal, 16)
+                        }
+                        .padding(20)
+                        .transition(.move(edge: .bottom))
+                        .animation(.easeInOut, value: showToast)
+                    }
+
+                }
+
                     }
                     .navigationBarHidden(true)
                 }
