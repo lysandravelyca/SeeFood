@@ -74,7 +74,9 @@ struct TenantListView: View {
                                     .bold()
                                     .foregroundColor(.black)
                                     .padding(.bottom, 8)
-//                                    .padding(.horizontal, 16)
+                                    .frame(width: 140)
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
                                     
                             }
                             .background(RoundedRectangle(cornerRadius: 12).fill(Color.orange))

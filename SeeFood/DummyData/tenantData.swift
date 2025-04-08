@@ -89,7 +89,7 @@ class TenantData {
                     MenuItem(image: "NK2", name: "Dendeng Batokok", des: "Irisan tipis daging sapi dengan sambal hijau.", price: "Rp 30.000"),
                     MenuItem(image: "NK3", name: "Ayam Pop", des: "Ayam rebus dengan bumbu gurih alami.", price: "Rp 20.000"),
                     MenuItem(image: "NK4", name: "Telur Dadar Padang", des: "Telur dadar dengan bumbu khas Padang.", price: "Rp 18.000"),
-                    MenuItem(image: "NK5", name: "Nasi Kapau", des: "Nasi putih khas Minang.", price: "Rp 22.000")
+                    MenuItem(image: "NP", name: "Nasi Kapau", des: "Nasi putih khas Minang.", price: "Rp 22.000")
     
                 ], price: "Rp 15.000 - Rp 35.000", hour: "08.00 - 17.00", phone: "089743217755", locationID: locations[1].id),
                 
