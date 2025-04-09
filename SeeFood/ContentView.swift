@@ -37,14 +37,12 @@ struct ContentView: View {
                         VStack(alignment: .leading){
                             Text("Recommended Menu")
                                 .bold()
-                                .font(.system(size: 28))
+                                .font(.title)
                                 .foregroundStyle(.white)
-                                .fontWeight(.bold)
-                            Text("Our top 4 menus for you today")
+                            Text("Developer's top 4 menus for today")
                                 .foregroundStyle(.white)
-                                .fontWeight(.light)
+                                .font(.headline)
                         }
-                        
                         
                         Spacer()
                         
@@ -80,7 +78,7 @@ struct ContentView: View {
                                     VStack(alignment: .leading) {
                                         VStack(alignment: .leading) {
                                             Text(cardMenuItem?.name ?? tenant.name)
-                                                .font(.system(size: 20))
+                                                .font(.title3)
                                                 .fontWeight(.bold)
                                                 .foregroundColor(.black)
                                             
@@ -91,7 +89,7 @@ struct ContentView: View {
                                                     .frame(width: 14, height: 14)
                                                 
                                                 Text(tenant.name)
-                                                    .font(.system(size: 12))
+                                                    .font(.caption)
                                                     .fontWeight(.medium)
                                                     .foregroundColor(.gray)
                                             }
@@ -126,7 +124,7 @@ struct ContentView: View {
                     
                     Text("Let's Explore Food in GOP")
                         .bold()
-                        .font(.system(size: 20))
+                        .font(.title2)
                         .fontWeight(.bold)
                     
                     Map(position: $position) {
