@@ -27,45 +27,14 @@ struct TenantDetailView: View {
                     
                     ScrollView {
                         
-                        HStack(alignment: .center) {
-                            //button back
-                            Button {
-                                // action animasi back
-                                print("test")
-                                dismiss()
-                            } label: {
-                                Image(systemName: "chevron.left") // SF symbbol
-                                    .font(.system(size: 25))
-                                    .foregroundColor(.black)
-                                    .frame(width: 45, height: 45)
-                                    .background(.white)
-                                    .clipShape(Circle())
-                                    .overlay(
-                                        Circle()
-                                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
-                                    )
-                            }
-                            Spacer() // Menambahkan Spacer() untuk mendorong VStack ke tengah
-                            VStack {
-                                Text(tenant.name)
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .multilineTextAlignment(.center)
-                                    .frame(width: 200)
-                                
-                                //                                Text(location.name)
-                                //                                    .font(.subheadline)
-                                //                                    .fontWeight(.medium)
-                                //                                    .foregroundStyle(.gray)
-                                //                                    .multilineTextAlignment(.center)
-                                //                                    .padding(.bottom, 20)
-                            }
-                            Spacer()
-                            Text("          ")
+                        VStack {
+                            Text(tenant.name)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                                .frame(width: 200)
                             
                         }
-                        .padding(.horizontal,45)
-                        
                         
                         
                         HStack {
@@ -89,8 +58,7 @@ struct TenantDetailView: View {
                                         .foregroundStyle(.green)
                                         .frame(width: 30, height: 30)
                                     Text(tenant.hour)
-                                        .font(.system(size: 14))
-                                    //                                                .fontWeight(.semibold)
+                                        .font(.subheadline)
                                 }
                                 
                                 HStack {
@@ -99,8 +67,7 @@ struct TenantDetailView: View {
                                         .foregroundStyle(.green)
                                         .frame(width: 30, height: 30)
                                     Text(tenant.phone)
-                                        .font(.system(size: 14))
-                                    //                                                .fontWeight(.semibold)
+                                        .font(.subheadline)
                                 }
                                 
                                 HStack {
@@ -109,11 +76,9 @@ struct TenantDetailView: View {
                                         .foregroundStyle(.green)
                                         .frame(width: 30, height: 30)
                                     Text("Rp15.000 - Rp25.000")
-                                        .font(.system(size: 14))
-                                    //                                                .fontWeight(.semibold)
+                                        .font(.subheadline)
                                 }
                             }
-                            //                                    .frame(width: 20)
                             
                             
                         }
@@ -125,7 +90,7 @@ struct TenantDetailView: View {
                             if tenant.menuItems.isEmpty {
                                 Text("Tidak ada menu yang tersedia")
                                     .foregroundColor(.gray)
-                                    .italic()
+                                    .font(.caption)
                             } else {
                                 VStack(alignment: .leading, spacing: 10) {
                                     Text("Menu")
@@ -143,15 +108,9 @@ struct TenantDetailView: View {
                                                 .frame(width: 130, height: 100)
                                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                             
-                                            //                                                    Spacer()
-                                            // Deskripsi Menu
                                             VStack(alignment: .leading, spacing: 8) {
                                                 Text(tenant.menuItems[index].name)
                                                     .font(.headline)
-                                                
-                                                //                                                        Text(tenant.menuItems[index].des)
-                                                //                                                            .font(.subheadline)
-                                                //                                                            .foregroundColor(.gray)
                                                 
                                                 Text("\(tenant.menuItems[index].price)")
                                                     .font(.subheadline)
@@ -161,7 +120,6 @@ struct TenantDetailView: View {
                                             
                                             // Toggle Favorite
                                             Button(action: {
-                                                //                                                        let isNowFavorite = toggleFavorite(menu: tenant.menuItems[index])
                                                 let isNowFavorite = toggleFavorite(menu: tenant.menuItems[index])
                                                 toastMessage = isNowFavorite ? "Menu ditambahkan ke favorit!" : "Menu dihapus dari favorit!"
                                                 withAnimation {
@@ -174,27 +132,11 @@ struct TenantDetailView: View {
                                                     }
                                                 }
                                                 
-                                                //                                                        alertMessage = isNowFavorite ? "Yeay, menu favoritmu sudah ditambahkan!" : "Menu ini sudah dihapus dari daftar favoritmu."
-                                                //
-                                                //                                                        if isNowFavorite {
-                                                //                                                            showRedirectAlert = true
-                                                //                                                        }
-                                                
                                             }){
                                                 Image(systemName: favoriteManager.isFavorite(menu: tenant.menuItems[index]) ? "star.fill" : "star")
                                                     .font(.system(size: 24))
                                                     .foregroundColor(favoriteManager.isFavorite(menu: tenant.menuItems[index]) ? .yellow : .gray)
-                                                //                                                    }
-                                                //                                                    .alert(isPresented: $showRedirectAlert) {
-                                                //                                                        Alert(
-                                                //                                                            title: Text("Menu berhasil Ditambahkan!"),
-                                                //                                                            message: Text("Yuk lihat daftar favoritmu!"),
-                                                //                                                            primaryButton: .default(Text("Lihat"), action: {
-                                                //                                                                isRedirecting = true // Mengarahkan ke FavoriteMenuView
-                                                //                                                            }),
-                                                //                                                            secondaryButton: .cancel(Text("Nanti Aja"))
-                                                ////                                                                              .font(.system(size: 18))
-                                                //                                                        )
+                                                
                                             }
                                         }
                                         .frame(width: 350)
@@ -237,7 +179,7 @@ struct TenantDetailView: View {
                                     showToast = false // Tutup toast setelah klik
                                 }) {
                                     Text("Lihat")
-                                        .font(.system(size: 14, weight: .semibold))
+                                        .font(.system(size: 14, weight: .bold))
                                         .foregroundColor(.white)
                                 }
                             }
@@ -256,7 +198,18 @@ struct TenantDetailView: View {
                 }
 
                     }
-                    .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 17, weight: .bold))
+                            .foregroundStyle(Color.black)
+                            .padding(.leading, 18)
+                    }
+                }}
                 }
                 
             }

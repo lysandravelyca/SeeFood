@@ -166,17 +166,17 @@ class TenantData {
                 
                 Tenant(name: "Warkop Indra", image: "Wkp", menuItems: [
                     
-                    MenuItem(image: "W-1", name: "Indomie Rebus Spesial", des: "Indomie rebus dengan telur, sosis, dan kornet", price: "Rp 12.000"),
-                    MenuItem(image: "W-2", name: "Kopi Tubruk", des: "Kopi hitam khas Warkop Indra", price: "Rp 15.000"),
-                    MenuItem(image: "W-3", name: "Roti Bakar Coklat Keju", des: "Roti bakar dengan isian coklat dan keju", price: "Rp 17.000"),
-                    MenuItem(image: "W-4", name: "Pisang Goreng Karamel", des: "Pisang goreng dengan lelehan karamel", price: "Rp 15.000")
+                    MenuItem(image: "W-2", name: "Indomie Rebus Spesial", des: "Indomie rebus dengan telur, sosis, dan kornet", price: "Rp 12.000"),
+                    MenuItem(image: "W-1", name: "Kopi Tubruk", des: "Kopi hitam khas Warkop Indra", price: "Rp 15.000"),
+                    MenuItem(image: "W-4", name: "Roti Bakar Coklat Keju", des: "Roti bakar dengan isian coklat dan keju", price: "Rp 17.000"),
+                    MenuItem(image: "W-3", name: "Pisang Goreng Karamel", des: "Pisang goreng dengan lelehan karamel", price: "Rp 15.000")
                     
                     
                 ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "089543983473", locationID: locations[2].id),
                 
                 Tenant(name: "Nasi Rames Bu Imas", image: "NR6", menuItems: [
                     
-                    MenuItem(image: "NR-1", name: "Nasi Rame Komplit", des: "Nasi dengan ayam, tahu, tempe, sayur, dan sambal", price: "Rp 12.000"),
+                    MenuItem(image: "NR-1", name: "Nasi Rames Komplit", des: "Nasi dengan ayam, tahu, tempe, sayur, dan sambal", price: "Rp 12.000"),
                     MenuItem(image: "NR-2", name: "Nasi Kuning Komplit", des: "Nasi kuning dengan ayam, telur, tahu, tempe, dan sambal", price: "Rp 15.000"),
                     MenuItem(image: "NR-3", name: "Tumis Kangkung", des: "Kangkung yang ditumis dengan bawang putih dan cabai", price: "Rp 17.000"),
                     MenuItem(image: "NR-4", name: "Perkedel Kentang", des: "Perkedel kentang lembut dengan bumbu spesial", price: "Rp 15.000")
@@ -186,10 +186,10 @@ class TenantData {
                 
                 Tenant(name: "Uena", image: "Uena", menuItems: [
                     
-                    MenuItem(image: "U-1", name: "Ayam Bakar Madu", des: "Ayam bakar dengan bumbu madu", price: "Rp 12.000"),
-                    MenuItem(image: "U-2", name: "Sate Taichan", des: "Sate ayam tanpa bumbu kacang", price: "Rp 15.000"),
-                    MenuItem(image: "U-3", name: "Nasi Goreng Kampung", des: "Nasi goreng dengan bumbu khas", price: "Rp 17.000"),
-                    MenuItem(image: "U-4", name: "Es Teh Tarik", des: "Es teh dengan kental manis", price: "Rp 15.000")
+                    MenuItem(image: "U-2", name: "Ayam Bakar Madu", des: "Ayam bakar dengan bumbu madu", price: "Rp 12.000"),
+                    MenuItem(image: "U-4", name: "Sate Taichan", des: "Sate ayam tanpa bumbu kacang", price: "Rp 15.000"),
+                    MenuItem(image: "U-1", name: "Nasi Goreng Kampung", des: "Nasi goreng dengan bumbu khas", price: "Rp 17.000"),
+                    MenuItem(image: "U-3", name: "Es Teh Tarik", des: "Es teh dengan kental manis", price: "Rp 15.000")
                     
                     
                 ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "089543281100", locationID: locations[2].id),
@@ -197,9 +197,9 @@ class TenantData {
                 Tenant(name: "Roti Bakar Tangerang", image: "RB", menuItems: [
                     
                     MenuItem(image: "RB-1", name: "Roti Bakar Nutella", des: "Roti bakar dengan olesan nutella", price: "Rp 12.000"),
-                    MenuItem(image: "RB-2", name: "Roti Bakar Susu Coklat", des: "Roti bakar dengan susu coklat", price: "Rp 15.000"),
-                    MenuItem(image: "RB-3", name: "Pisang Bakar Keju", des: "Pisang bakar bertabur keju", price: "Rp 17.000"),
-                    MenuItem(image: "RB-4", name: "Es Milo Dino", des: "Es milo dengan coklat bubuk melimpah", price: "Rp 15.000")
+                    MenuItem(image: "RB-4", name: "Roti Bakar Susu Coklat", des: "Roti bakar dengan susu coklat", price: "Rp 15.000"),
+                    MenuItem(image: "RB-2", name: "Pisang Bakar Keju", des: "Pisang bakar bertabur keju", price: "Rp 17.000"),
+                    MenuItem(image: "RB-3", name: "Es Milo Dino", des: "Es milo dengan coklat bubuk melimpah", price: "Rp 15.000")
                     
                     
                 ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "0895430980177", locationID: locations[2].id),
@@ -207,9 +207,9 @@ class TenantData {
                 Tenant(name: "Nasi Kapau Bundo Kito", image: "NKA", menuItems: [
                     
                     MenuItem(image: "NKA-1", name: "Gulai Tambusu", des: "Usus sapi dengan isi tahu dan telur", price: "Rp 12.000"),
-                    MenuItem(image: "NKA-2", name: "Ikan Asam Padeh", des: "Kopi susu segar", price: "Rp 15.000"),
-                    MenuItem(image: "NKA-3", name: "Dendeng Batokok", des: "Kopi susu gula aren", price: "Rp 17.000"),
-                    MenuItem(image: "NKA-4", name: "Sayur Kapau", des: "Coklat dengan susu segar", price: "Rp 15.000")
+                    MenuItem(image: "NKA-3", name: "Ikan Asam Padeh", des: "Kopi susu segar", price: "Rp 15.000"),
+                    MenuItem(image: "NKA-4", name: "Dendeng Batokok", des: "Kopi susu gula aren", price: "Rp 17.000"),
+                    MenuItem(image: "NKA-2", name: "Sayur Kapau", des: "Coklat dengan susu segar", price: "Rp 15.000")
                     
                     
                 ], price: "Rp12.00 - Rp20.000", hour: "08.00 - 17.00", phone: "0895438478374", locationID: locations[2].id),

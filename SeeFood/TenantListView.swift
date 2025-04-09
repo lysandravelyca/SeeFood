@@ -31,25 +31,7 @@ struct TenantListView: View {
                         .resizable()
                         .ignoresSafeArea(.all)
                     
-                    //button back
-                    Button{
-                        // action animasi back
-                        dismiss()
-                        
-                    } label: {
-                        Image(systemName: "chevron.left") // SF symbbol
-                            .font(.system(size: 25))
-                            .foregroundColor(.black)
-                            .frame(width: 45, height: 45)
-                            .background(.white)
-                            .clipShape(Circle())
-                            .overlay(
-                                   Circle()
-                                    .stroke(Color.gray.opacity(0.8), lineWidth: 1)
-                               )
-                            .padding(.bottom, 200)
-                            .padding(.trailing,290)
-                    }
+                    
             
                     // nama location
                     Text(location.name)
@@ -74,7 +56,7 @@ struct TenantListView: View {
                                     .bold()
                                     .foregroundColor(.black)
                                     .padding(.bottom, 8)
-                                    .frame(width: 140)
+                                    .frame(width:140)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
                                     
@@ -89,7 +71,18 @@ struct TenantListView: View {
                 .padding(.bottom, 32)
             }
             .ignoresSafeArea(.all)
-            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 17, weight: .bold))
+                            .foregroundStyle(Color.black)
+                            .padding(.leading, 18)
+                    }
+                }}
             
         }
     
