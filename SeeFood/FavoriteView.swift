@@ -18,39 +18,23 @@ struct FavoriteMenuView: View {
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
                 .padding(.bottom, -200)
-            
-            Button{
-                // action animasi back
-                dismiss()
-                
-            } label: {
-                Image(systemName: "chevron.left") // SF symbbol
-                    .font(.system(size: 25))
-                    .foregroundColor(.black)
-                    .frame(width: 45, height: 45)
-                    .background(.white)
-                    .clipShape(Circle())
-                    .overlay(
-                           Circle()
-                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
-                       )
-                    .padding(.bottom, 700)
-                    .padding(.trailing,290)
-            }
         
             VStack{
             
                 if favoriteManager.favoriteMenus.isEmpty {
                     
-                    Text("Favorite Menus")
+                    Text("Feeling hungry? ")
                         .font(.title)
                         .bold()
                         
                     
-                    Text("No favorite menus yet.")
+                    Text("Add your favorite menu to get started!")
                         .fontWeight(.semibold)
                         .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
                         .padding(.bottom ,20)
+                        .frame(maxWidth: 350)
+                        
                     
                 } else {
                     
@@ -67,15 +51,12 @@ struct FavoriteMenuView: View {
                                 .font(.title)
                                 .bold()
                                 .padding(.top,30)
-                            
-                            Text("The following menu is sorted by distance closest to you")
-                                .fontWeight(.semibold)
+                            Text("Done eating? Swipe left to keep track!")
                                 .foregroundColor(.gray)
-                                .padding(.bottom, 20)
+                            
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading) 
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 50)
-                        .padding(.top, 50)
                         
                         List {
                             ForEach(groupedMenus.keys.sorted(), id: \.self) { tenantName in
@@ -100,46 +81,48 @@ struct FavoriteMenuView: View {
                                         VStack(alignment: .leading) {
                                             Text(menu.name)
                                                 .font(.headline)
-                                            Text(menu.des)
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
-                                            Text("Harga: \(menu.price)")
+
+                                            Text("\(menu.price)")
                                                 .font(.subheadline)
                                                 .bold()
                                         }
                                         
                                         Spacer()
-                                        
-                                        Button(action: {
-                                            selectedMenu = menu
-                                            showAlert = true
-                                        }) {
-                                            Image(systemName: "trash")
-                                                .foregroundColor(.red)
-                                        }
-                                        .alert("Hapus Favorit", isPresented: $showAlert) {
-                                            Button("Hapus", role: .destructive) {
-                                                if let menuToDelete = selectedMenu {
-                                                    favoriteManager.removeFavorite(menu: menuToDelete)
+                                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                                Button {
+                                                    favoriteManager.removeFavorite(menu: menu)
+                                                } label: {
+                                                    Label("Complete", systemImage: "checkmark.seal.fill")
                                                 }
+                                                .tint(.green) 
                                             }
-                                            Button("Batal", role: .cancel) {}
-                                        } message: {
-                                            Text("Apakah Anda yakin ingin menghapus menu ini dari favorit?")
-                                        }
+
+                                        
                                     }
                                     .padding(.vertical, 5)
                                 }
                             }
                         }
                         .listStyle(.plain)
-                        .scrollContentBackground(.hidden) // Removes extra background spacing
+                        .scrollContentBackground(.hidden)
                         .padding (.horizontal, 40)
                     }
                 }
             }
         }
-        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 17, weight: .bold))
+                        .foregroundStyle(Color.black)
+                        .padding(.leading, 18)
+                }
+            }
+        }
     }
 }
 
